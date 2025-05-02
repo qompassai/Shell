@@ -1,0 +1,15 @@
+export PATH="$HOME/.zvm/bin:$ZVM_INSTALL:$PATH"
+export ZIG_BTRFS_WORKAROUND=1
+export ZIG_GLOBAL_CACHE_DIR="$HOME/.cache/zig"
+export ZIG_LIBC="x86_64-linux-gnu"
+#export ZIG_LIB_DIR="$HOME/.ziglibs"
+export ZIG_LOCAL_CACHE_DIR="$HOME/.local/share/zig/cache"
+export ZIG_MCPU="native"
+export ZIG_PKG_CONFIG_PATH="$HOME/.pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig"
+export ZIG_SYSTEM_LINKER_HACK=1
+export ZIG_VERBOSE_CC=1
+export ZIG_VERBOSE_LINK=1
+export ZIGCC="zig cc"
+export ZIGCPP="zig c++"
+export ZLS_CONFIG_PATH="$HOME/.config/zls/zls.json"
+export ZVM_INSTALL="$HOME/.zvm/self"
