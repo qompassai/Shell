@@ -6,7 +6,8 @@
 
 <h3> Qompass AI on Shell </h3>
 
-![Repository Views](https://komarev.com/ghpvc/?username=qompassai-shell)
+![Repository Views](https://komarev.com/ghpvc/?username=qompassai-Shell)
+![GitHub all releases](https://img.shields.io/github/downloads/qompassai/Shell/total?style=flat-square)
   <a href="https://www.gnu.org/software/bash/manual/">
   <img src="https://img.shields.io/badge/Bash_Docs-blue?style=flat-square" alt="Bash Documentation">
 </a>
