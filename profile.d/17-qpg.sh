@@ -1,5 +1,7 @@
-# /usr/bin/env/sh
-# shellcheck
+#!/usr/bin/env bash
+# /qompassai/Shell/.profile.d/17-qpg.sh
+# Copyright (C) 2025 Qompass AI, All rights reserved
+####################################################
 #Liboqs
 export C_INCLUDE_PATH="/opt/QAI/liboqs/include:$C_INCLUDE_PATH"
 export LIBRARY_PATH="/opt/QAI/liboqs/lib:$LIBRARY_PATH"
