@@ -1,1 +1,1 @@
-export DOVECOT_CONF="$HOME/.config/dovecot/dovecot.conf"
+/home/phaedrus/.profile.d/43-dovecot.sh
