@@ -8,6 +8,8 @@
 
 ![Repository Views](https://komarev.com/ghpvc/?username=qompassai-Shell)
 ![GitHub all releases](https://img.shields.io/github/downloads/qompassai/Shell/total?style=flat-square)
+
+<p align="center">
   <a href="https://www.gnu.org/software/bash/manual/">
   <img src="https://img.shields.io/badge/Bash_Docs-blue?style=flat-square" alt="Bash Documentation">
 </a>
