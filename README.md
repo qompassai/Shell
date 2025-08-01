@@ -1,6 +1,7 @@
-<!-- /qompassai/shell/README.md -->
-<!-- ---------------------------- -->
+<!-------------/qompassai/shell/README.md ---------------->
+<!-- -------------Qompass AI Shell ----------------------->
 <!-- Copyright (C) 2025 Qompass AI, All rights reserved -->
+<!-------------------------------------------------------->
 
 <h2> Shell: Bash, Fish, Zsh, PowerShell, and NuShell Oh My </h2>
 
@@ -35,8 +36,179 @@
 
 
 <details>
-<summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;"><strong>🐚 How to Use Qompass AI Shell</strong></summary>
-<blockquote style="font-size: 1.2em; line-height: 1.8; padding: 25px; background: #f8f9fa; border-left: 6px solid #667eea; border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
+    <strong>▶️ Qompass AI Quick Start</strong>
+  </summary>
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
+
+```sh  
+curl -fsSL https://raw.githubusercontent.com/qompassai/shell/main/scripts/quickstart.sh | sh
+```
+  </div>
+  <blockquote style="font-size: 1.2em; line-height: 1.8; padding: 25px; background: #f8f9fa; border-left: 6px solid #667eea; border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <details>
+      <summary style="font-size: 1em; font-weight: bold; padding: 10px; background: #e9ecef; color: #333; border-radius: 5px; cursor: pointer; margin: 10px 0;">
+        <strong>📄 We advise you read the script BEFORE running it 😉</strong>
+      </summary>
+      <pre style="background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; overflow-x: auto;">
+#!/usr/bin/env sh
+# /qompassai/shell/scripts/quickstart.sh
+# Qompass AI Shell Quickstart Script
+# Copyright (C) 2025 Qompass AI
+########################################
+set -eu
+print() { printf '[shellcv]: %s\n' "$1"; }
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+LOCAL_PREFIX="${LOCAL_PREFIX:-$HOME/.local}"
+BIN_PATH="$LOCAL_PREFIX/bin"
+mkdir -p "$BIN_PATH"
+BANNER() {
+        printf '╭────────────────────────────────────────────╮\n'
+        printf '│    Qompass AI · Shell Quick‑Start          │\n'
+        printf '╰────────────────────────────────────────────╯\n'
+        printf '    © 2025 Qompass AI. All rights reserved   \n\n'
+}
+SHELL_MENU="
+1|bash
+2|zsh
+3|fish
+a|All
+q|Quit
+"
+show_menu() {
+        echo "Which shell(s) would you like to install/update?"
+        echo "$SHELL_MENU" | while IFS="|" read num name; do
+                [ -z "$num" ] && continue
+                [ "$num" = "q" ] && {
+                        echo " q) Quit"
+                        break
+                }
+                [ "$num" = "a" ] && {
+                        echo " a) All of the above"
+                        continue
+                }
+                echo " $num) $name"
+        done
+        printf "Choose [1]: "
+}
+install_shell() {
+        name="$1"
+        case "$name" in
+        bash)
+                print "Installing bash (user-local, if possible)..."
+                if command -v bash >/dev/null 2>&1; then
+                        print "bash already installed: $(command -v bash)"
+                else
+                        if command -v pacman >/dev/null 2>&1; then
+                                print "Installing with pacman (if needed)"
+                                sudo pacman -S --needed bash
+                        elif command -v apt-get >/dev/null 2>&1; then
+                                print "Installing with apt-get (if needed)"
+                                sudo apt-get install -y bash
+                        else
+                                print "Building bash from source in ~/.local..."
+                                curl -LO https://ftp.gnu.org/gnu/bash/bash-5.2.21.tar.gz
+                                tar -xzf bash-5.2.21.tar.gz && cd bash-5.2.21
+                                ./configure --prefix="$LOCAL_PREFIX"
+                                make -j"$(nproc)"
+                                make install
+                                cd .. && rm -rf bash-5.2.21*
+                        fi
+                fi
+                echo "To persistently use bash configs:"
+                echo "  Edit ~/.bashrc or $XDG_CONFIG_HOME/bash/bashrc"
+                ;;
+        zsh)
+                print "Installing zsh (user-local, if possible)..."
+                if command -v zsh >/dev/null 2>&1; then
+                        print "zsh already installed: $(command -v zsh)"
+                else
+                        if command -v pacman >/dev/null 2>&1; then
+                                print "Installing with pacman"
+                                sudo pacman -S --needed zsh
+                        elif command -v apt-get >/dev/null 2>&1; then
+                                print "Installing with apt-get"
+                                sudo apt-get install -y zsh
+                        else
+                                print "Building zsh from source in ~/.local..."
+                                curl -LO https://downloads.sourceforge.net/project/zsh/zsh/5.9/zsh-5.9.tar.xz
+                                tar -xf zsh-5.9.tar.xz && cd zsh-5.9
+                                ./configure --prefix="$LOCAL_PREFIX"
+                                make -j"$(nproc)"
+                                make install
+                                cd .. && rm -rf zsh-5.9*
+                        fi
+                fi
+                echo "To persistently use zsh configs:"
+                echo "  Edit ~/.zshrc or $XDG_CONFIG_HOME/zsh/.zshrc"
+                ;;
+        fish)
+                print "Installing fish (user-local, if possible)..."
+                if command -v fish >/dev/null 2>&1; then
+                        print "fish already installed: $(command -v fish)"
+                else
+                        if command -v pacman >/dev/null 2>&1; then
+                                print "Installing with pacman"
+                                sudo pacman -S --needed fish
+                        elif command -v apt-get >/dev/null 2>&1; then
+                                print "Installing with apt-get"
+                                sudo apt-get install -y fish
+                        else
+                                print "Building fish from source in ~/.local..."
+                                curl -LO https://github.com/fish-shell/fish-shell/releases/download/3.7.1/fish-3.7.1.tar.xz
+                                tar -xf fish-3.7.1.tar.xz && cd fish-3.7.1
+                                cmake -DCMAKE_INSTALL_PREFIX="$LOCAL_PREFIX" .
+                                make -j"$(nproc)"
+                                make install
+                                cd .. && rm -rf fish-3.7.1*
+                        fi
+                fi
+                echo "To persistently use fish configs:"
+                echo "  Edit ~/.config/fish/config.fish"
+                ;;
+        *)
+                print "Unknown shell: $name"
+                ;;
+        esac
+}
+while :; do
+        BANNER
+        show_menu
+        read -r CHOICE
+        [ -z "$CHOICE" ] && CHOICE=1
+        case "$CHOICE" in
+        1)
+                install_shell "bash"
+                ;;
+        2)
+                install_shell "zsh"
+                ;;
+        3)
+                install_shell "fish"
+                ;;
+        a | A)
+                install_shell "bash"
+                install_shell "zsh"
+                install_shell "fish"
+                ;;
+        q | Q)
+                print "Goodbye!"
+                exit 0
+                ;;
+        *)
+                print "Invalid option."
+                ;;
+        esac
+        echo
+        printf "Press enter to return to menu..."
+        read -r dummy
+        clear
+done
+</pre>
+    </details>
+    <p>Or, <a href="https://github.com/qompassai/shell/blob/main/scripts/quickstart.sh" target="_blank">View the quickstart script</a>.</p>
+  </blockquote>
+</details>
 
 </blockquote>
 </details>
@@ -72,7 +244,6 @@
 [![HackerOne](https://img.shields.io/badge/-HackerOne-%23494649?style=for-the-badge\&logo=hackerone\&logoColor=white)](https://hackerone.com/phaedrusflow)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-qompass-yellow?style=flat-square\&logo=huggingface)](https://huggingface.co/qompass)
 [![Epic Games Developer](https://img.shields.io/badge/Epic_Games-Developer_Program-313131?style=for-the-badge\&logo=epic-games\&logoColor=white)](https://dev.epicgames.com/)
-
 <h3>Professional Profiles</h3>
   <p>
     <a href="https://www.linkedin.com/in/matt-a-porter-103535224/">
@@ -139,7 +310,7 @@
 **Monero (XMR):**
 
 <div align="center">
-  <img src="./assets/monero-qr.png" alt="Monero QR Code" width="180">
+  <img src="https://raw.githubusercontent.com/qompassai/svg/main/assets/monero-qr.svg" alt="Monero QR Code" width="180">
 </div>
 
 <div style="margin: 10px 0;">
@@ -186,17 +357,17 @@ Where:
 For neural networks, the bias term is incorporated before activation:
 
 $$
-z = \\sum\_{i=1}^{n} w_ix_i + b
+z = \sum_{i=1}^{n} w_ix_i + b
 $$
 $$
-a = \\sigma(z)
+a = \sigma(z)
 $$
 
 Where:
 
 - $z$ is the weighted sum plus bias
 - $a$ is the activation output
-- $\\sigma$ is the activation function
+- $\sigma$ is the activation function
 
 ### Attention Mechanism- aka what makes the Transformer (The "T" in ChatGPT) powerful
 
@@ -207,7 +378,7 @@ Where:
 The Attention mechanism equation is:
 
 $$
-\\text{Attention}(Q, K, V) = \\text{softmax}\\left( \\frac{QK^T}{\\sqrt{d_k}} \\right) V
+Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
 $$
 
 Where:
@@ -216,7 +387,7 @@ Where:
 - $K$ represents the Key matrix
 - $V$ represents the Value matrix
 - $d_k$ is the dimension of the key vectors
-- $\\text{softmax}(\\cdot)$ normalizes scores to sum to 1
+- $\text{softmax}(\cdot)$ normalizes scores to sum to 1
 
 ### Q: Do I have to buy a Linux computer to use this? I don't have time for that!
 
