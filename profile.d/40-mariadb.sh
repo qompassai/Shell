@@ -1,1 +1,0 @@
-/home/phaedrus/.profile.d/40-mariadb.sh

@@ -1,1 +1,0 @@
-/home/phaedrus/.profile.d/56-python.sh

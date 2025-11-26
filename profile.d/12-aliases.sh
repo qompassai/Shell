@@ -1,1 +1,0 @@
-/home/phaedrus/.profile.d/12-aliases.sh

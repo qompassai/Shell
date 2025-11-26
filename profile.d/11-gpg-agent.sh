@@ -1,1 +1,0 @@
-/home/phaedrus/.profile.d/11-gpg-agent.sh
