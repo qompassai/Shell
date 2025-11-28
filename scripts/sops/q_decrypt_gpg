@@ -1,0 +1,14 @@
+# /qompassai/Shell/scripts/sops/q_decrypt_gpg
+# ----------------------------------------------
+# Copyright (C) 2025 Qompass AI, All rights reserved
+
+BACKUP_DIR="$HOME/.gnupg/private-keys-v1.d"
+ENCRYPTED_DIR="$HOME/.config/sops/encrypted-gpg-keys"
+echo "Decrypting GPG keys to temporary location..."
+TEMP_DIR=$(mktemp -d)
+for file in "$ENCRYPTED_DIR"/*; do
+    filename=$(basename "$file")
+    sops --decrypt "$file" > "$TEMP_DIR/$filename"
+done
+echo "Decrypted keys available in: $TEMP_DIR"
+echo "Remember to securely delete when done: rm -rf $TEMP_DIR"

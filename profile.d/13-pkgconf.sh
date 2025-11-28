@@ -1,0 +1,1 @@
+/home/phaedrus/.profile.d/13-pkgconf.sh

@@ -1,0 +1,6 @@
+# /qompassai/Shell/scripts/dependabot/github-token.yaml
+# ------------------------------------
+# Copyright (C) 2025 Qompass AI, All rights reserved
+# ~/.secrets/github-token.yaml (encrypted with sops)
+github:
+  token: ghp_XXXXXXXXXXXXXXXXXXXXXXXXXX

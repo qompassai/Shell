@@ -1,0 +1,1 @@
+/home/phaedrus/.profile.d/62-bash-comp.sh

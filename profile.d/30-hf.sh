@@ -1,0 +1,1 @@
+/home/phaedrus/.profile.d/30-hf.sh

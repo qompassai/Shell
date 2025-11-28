@@ -1,0 +1,1 @@
+/home/phaedrus/.profile.d/44-git.sh
