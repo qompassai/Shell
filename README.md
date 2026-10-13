@@ -52,6 +52,7 @@ curl -fsSL https://raw.githubusercontent.com/qompassai/shell/main/scripts/quicks
       <pre style="background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; overflow-x: auto;">
 #!/usr/bin/env sh
 # /qompassai/shell/scripts/quickstart.sh
+<a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
 # Qompass AI Shell Quickstart Script
 # Copyright (C) 2025 Qompass AI
 ########################################
