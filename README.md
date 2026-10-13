@@ -30,7 +30,7 @@
   <img src="https://img.shields.io/badge/Shell_Tutorials-green?style=flat-square" alt="Shell Tutorials">
 </a>
 <br>
-  <a href=\"./LICENSE\"><img src=\"https://img.shields.io/badge/License-Apache%202.0-blue.svg\" alt=\"License: Apache 2.0\"></a>
+
 </p>
 
 
